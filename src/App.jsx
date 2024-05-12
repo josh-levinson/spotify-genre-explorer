@@ -1,38 +1,44 @@
-import { useState } from 'react';
-import './App.css'
+import { useState } from "react";
+import "./App.css";
+import ArtistList from "./components/ArtistList/ArtistList";
 
 function App() {
-  const [artists, setArtists] = useState([])
+  const [artists, setArtists] = useState([]);
 
-  function handleArtistData(data) {
-    setArtists(data);
-    console.log(data);
-  }
-
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     // Prevent the browser from reloading the page
     e.preventDefault();
 
     // Read the form data
     const form = e.target;
     const formData = new FormData(form);
-    const artistName = formData.get('search');
+    const artistName = formData.get("search");
 
     // You can pass formData as a fetch body directly:
-    fetch(`http://localhost:3000/search_artist?artist_name=${encodeURIComponent(artistName)}`).then(response => response.json()).then(data => handleArtistData(data));
+    const response = await fetch(
+      `http://localhost:3000/search_artist?artist_name=${encodeURIComponent(
+        artistName
+      )}`
+    );
+    const data = await response.json();
+    setArtists(data?.artists?.items);
   }
 
   return (
     <>
-    <div>
-      <form onSubmit={handleSubmit}>
-        <p><input name="search" /></p>
-        <button type="submit">Search</button>
-      </form>
+      <div>
+        <div className="search">
+          <form onSubmit={handleSubmit}>
+            <p>
+              <input name="search" defaultValue="godspeed" />
+            </p>
+            <button type="submit">Search</button>
+          </form>
+        </div>
+        <ArtistList artists={artists} />
       </div>
-      <div>{artists.toString()}</div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
