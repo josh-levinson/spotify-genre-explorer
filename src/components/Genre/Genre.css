@@ -4,7 +4,13 @@
   padding: 2px 5px 5px;
 }
 
-button {
-  background: #9ec2eb;
-  border-radius: 2px;
+.genre-button {
+  background-color: #9ec2eb;
+  color: black;
+  border-radius: 5px;
+  border: 2px solid;
+}
+
+.genre-button:hover {
+  border: 2px solid red;
 }

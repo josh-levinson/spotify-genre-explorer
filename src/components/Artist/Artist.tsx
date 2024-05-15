@@ -1,6 +1,7 @@
 import React from "react";
 import "./Artist.css";
 import Genre from "../Genre/Genre";
+import spotifyLogo from "/spotify_logo.svg";
 
 export default function Artist({ artist, onGenreSelect }) {
   const imageUrl = artist.images[0]?.url;
@@ -11,8 +12,12 @@ export default function Artist({ artist, onGenreSelect }) {
       <div className="artist-details">
         <h3>
           {artist.name}
-          <a className="spotify-logo" href={spotifyUrl} target="_blank">
-            <img src="../../assets/spotify_icon.svg" />
+          <a href={spotifyUrl} target="_blank">
+            <img
+              className="spotify-logo"
+              src={spotifyLogo}
+              alt="Spotify Logo"
+            />
           </a>
         </h3>
         {imageUrl && (

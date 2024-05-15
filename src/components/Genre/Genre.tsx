@@ -4,7 +4,9 @@ import "./Genre.css";
 export default function Genre({ genre, onGenreSelect }) {
   return (
     <div className="genre">
-      <button onClick={() => onGenreSelect(genre)}>{genre}</button>
+      <button className="genre-button" onClick={() => onGenreSelect(genre)}>
+        {genre}
+      </button>
     </div>
   );
 }
