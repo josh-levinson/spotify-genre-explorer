@@ -1,9 +1,15 @@
 import { useState, useEffect } from "react";
 import "./App.css";
 import ArtistList from "./components/ArtistList/ArtistList";
+// import { authorize } from "./utils/spotify_auth";
 
 function App() {
   const [artists, setArtists] = useState([]);
+
+  useEffect(() => {
+    // authorize();
+    window.scrollTo(0, 0);
+  }, [artists]);
 
   async function handleSubmit(e) {
     // Prevent the browser from reloading the page
@@ -31,10 +37,6 @@ function App() {
     const data = await response.json();
     setArtists(data?.artists?.items);
   }
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [artists]);
 
   return (
     <>
