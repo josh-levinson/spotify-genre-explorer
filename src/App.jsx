@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import ArtistList from "./components/ArtistList/ArtistList";
 
@@ -21,8 +21,20 @@ function App() {
       )}`
     );
     const data = await response.json();
+    setArtists(data?.artists?.items.filter((artist) => artist.genres.length));
+  }
+
+  async function handleGenreSelect(genre) {
+    const response = await fetch(
+      `http://localhost:3000/search_genre?genre=${encodeURIComponent(genre)}`
+    );
+    const data = await response.json();
     setArtists(data?.artists?.items);
   }
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [artists]);
 
   return (
     <>
@@ -35,7 +47,7 @@ function App() {
             <button type="submit">Search</button>
           </form>
         </div>
-        <ArtistList artists={artists} />
+        <ArtistList artists={artists} onGenreSelect={handleGenreSelect} />
       </div>
     </>
   );

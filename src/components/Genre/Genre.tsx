@@ -1,10 +1,10 @@
 import React from "react";
 import "./Genre.css";
 
-export default function Genre({ genre }) {
+export default function Genre({ genre, onGenreSelect }) {
   return (
     <div className="genre">
-      <strong>{genre}</strong>
+      <button onClick={() => onGenreSelect(genre)}>{genre}</button>
     </div>
   );
 }
