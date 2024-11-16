@@ -22,7 +22,7 @@ const hashed = await sha256(codeVerifier)
 const codeChallenge = base64encode(hashed);
 
 const clientId = '1fd2e136ea1647d288b47d6341238387';
-const redirectUri = 'http://localhost:5713';
+const redirectUri = 'http://localhost:5173/callback';
 
 const scope = 'user-read-private user-read-email';
 const authUrl = new URL("https://accounts.spotify.com/authorize")
