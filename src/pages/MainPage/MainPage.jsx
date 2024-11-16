@@ -2,9 +2,11 @@ import { useState, useEffect } from "react";
 import "./MainPage.css";
 import ArtistList from "../../components/ArtistList/ArtistList";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 function MainPage() {
   const [artists, setArtists] = useState([]);
+  const navitage = useNavigate();
 
   useEffect(() => {
     // authorize();
@@ -38,8 +40,9 @@ function MainPage() {
     setArtists(data?.artists?.items);
   }
 
-  return (
-    <>
+ return (
+  <>
+    {localStorage.getItem('access_token') ? (
       <div>
         <div className="search">
           <form onSubmit={handleSubmit}>
@@ -51,8 +54,11 @@ function MainPage() {
         </div>
         <ArtistList artists={artists} onGenreSelect={handleGenreSelect} />
       </div>
-    </>
-  );
+    ) : (
+      navigate("/auth")
+    )}
+  </>
+); 
 }
 
 export default MainPage;

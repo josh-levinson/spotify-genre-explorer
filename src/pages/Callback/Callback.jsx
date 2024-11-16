@@ -1,9 +1,10 @@
-import { useLocation } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
+import { getToken } from '../../utils/spotify_auth';
 
 function Callback() {
     const location = useLocation(); // Get the current location (URL)
-    const [code, setCode] = useState(null); // State to store the response
+    const navigate = useNavigate();
 
     useEffect(() => {
     // Get the query string from the URL
@@ -15,13 +16,14 @@ function Callback() {
     const codeParam = queryParams.get('code');  // Get 'code' from the query string
 
     // Assign the 'code' to your variable (or perform any other logic)
-    setCode(codeParam);
+    const authToken = getToken(codeParam);
+    localStorage.setItem('access_token', authToken);
+    navigate("/");
   }, [location.search]); // Re-run the effect if the query string changes
 
   return (
     <div>
-      <h1>Callback Page</h1>
-      <p>Code: {code}</p>
+      <h1>Redirecting...</h1>
     </div>
   );
 };
