@@ -3,16 +3,3 @@
   margin: 0 auto;
   padding: 2rem;
 }
-
-.search {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 2rem;
-}
-
-input {
-  padding: 0.5rem;
-  font-size: 1.3rem;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}

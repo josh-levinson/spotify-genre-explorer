@@ -12,10 +12,9 @@
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "typescript": "^5.4.5"
+    "react-router-dom": "^6.28.0"
   },
   "devDependencies": {
-    "@types/react": "^18.3.2",
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react-swc": "^3.5.0",
     "eslint": "^8.57.0",
