@@ -1,15 +1,13 @@
 import { useState, useEffect } from "react";
 import "./MainPage.css";
+import AuthPage from "../AuthPage/AuthPage";
 import ArtistList from "../../components/ArtistList/ArtistList";
-import React from "react";
-import { useNavigate } from "react-router-dom";
 
 function MainPage() {
   const [artists, setArtists] = useState([]);
-  const navitage = useNavigate();
+  const accessToken = localStorage.getItem("access_token");
 
   useEffect(() => {
-    // authorize();
     window.scrollTo(0, 0);
   }, [artists]);
 
@@ -40,25 +38,25 @@ function MainPage() {
     setArtists(data?.artists?.items);
   }
 
- return (
-  <>
-    {localStorage.getItem('access_token') ? (
-      <div>
-        <div className="search">
-          <form onSubmit={handleSubmit}>
-            <p>
-              <input name="search" defaultValue="godspeed" />
-            </p>
-            <button type="submit">Search</button>
-          </form>
+  return (
+    <>
+      {accessToken ? (
+        <div>
+          <div className="search">
+            <form onSubmit={handleSubmit}>
+              <p>
+                <input name="search" defaultValue="godspeed" />
+              </p>
+              <button type="submit">Search</button>
+            </form>
+          </div>
+          <ArtistList artists={artists} onGenreSelect={handleGenreSelect} />
         </div>
-        <ArtistList artists={artists} onGenreSelect={handleGenreSelect} />
-      </div>
-    ) : (
-      navigate("/auth")
-    )}
-  </>
-); 
+      ) : (
+        <AuthPage />
+      )}
+    </>
+  );
 }
 
 export default MainPage;
