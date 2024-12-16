@@ -9,11 +9,8 @@ function Callback() {
   useEffect(() => {
     const queryParams = new URLSearchParams(location.search);
     const code = queryParams.get("code");
-    getAccessToken(code).then(() => {
-      console.log(
-        "access token",
-        localStorage.getItem("access_token", response.access_token)
-      );
+    getAccessToken(code).then((data) => {
+      console.log("access token", localStorage.getItem("access_token"));
       navigate("/");
     });
   }, [navigate, location.search]); // Re-run the effect if the query string changes
