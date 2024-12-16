@@ -6,6 +6,10 @@ import ArtistList from "../../components/ArtistList/ArtistList";
 function MainPage() {
   const [artists, setArtists] = useState([]);
   const accessToken = localStorage.getItem("access_token");
+  const headers = {
+    Authorization: `Bearer ${accessToken}`,
+    "Content-Type": "application/json",
+  };
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -22,9 +26,12 @@ function MainPage() {
 
     // You can pass formData as a fetch body directly:
     const response = await fetch(
-      `http://localhost:3000/search_artist?artist_name=${encodeURIComponent(
+      `https://api.spotify.com/v1/search?q=${encodeURIComponent(
         artistName
-      )}`
+      )}&type=artist`,
+      {
+        headers: headers,
+      }
     );
     const data = await response.json();
     setArtists(data?.artists?.items.filter((artist) => artist.genres.length));
@@ -32,7 +39,12 @@ function MainPage() {
 
   async function handleGenreSelect(genre) {
     const response = await fetch(
-      `http://localhost:3000/search_genre?genre=${encodeURIComponent(genre)}`
+      `https://api.spotify.com/v1/search?q=genre%3A${encodeURIComponent(
+        genre
+      )}&type=artist&limit=20`,
+      {
+        headers,
+      }
     );
     const data = await response.json();
     setArtists(data?.artists?.items);
