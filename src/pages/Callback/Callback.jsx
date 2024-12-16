@@ -7,18 +7,15 @@ function Callback() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Get the query string from the URL
     const queryParams = new URLSearchParams(location.search);
-
-    // Parse the query parameters, for example:
-    // Assuming the URL is something like:
-    // http://localhost:3000/callback?code=abcdef12345&state=xyz
-    const code = queryParams.get("code"); // Get 'code' from the query string
-
-    // Assign the 'code' to your variable (or perform any other logic)
-    const accessToken = getAccessToken(code);
-    localStorage.setItem("access_token", accessToken);
-    navigate("/");
+    const code = queryParams.get("code");
+    getAccessToken(code).then(() => {
+      console.log(
+        "access token",
+        localStorage.getItem("access_token", response.access_token)
+      );
+      navigate("/");
+    });
   }, [navigate, location.search]); // Re-run the effect if the query string changes
 
   return (

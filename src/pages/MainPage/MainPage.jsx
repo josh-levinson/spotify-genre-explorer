@@ -40,7 +40,9 @@ function MainPage() {
 
   return (
     <>
-      {accessToken ? (
+      {accessToken === null || accessToken === undefined ? (
+        <AuthPage />
+      ) : (
         <div>
           <div className="search">
             <form onSubmit={handleSubmit}>
@@ -52,8 +54,6 @@ function MainPage() {
           </div>
           <ArtistList artists={artists} onGenreSelect={handleGenreSelect} />
         </div>
-      ) : (
-        <AuthPage />
       )}
     </>
   );
