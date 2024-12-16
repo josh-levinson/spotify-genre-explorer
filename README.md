@@ -1,8 +1,17 @@
-# React + Vite
+# Spotify Genre Explorer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a React application for exploring hidden Spotify genres through API calls
 
-Currently, two official plugins are available:
+It generates an access token through client-side authorization, and then uses that access token to make searches through Spotify's API search, exposing genres, and allowing the user to then click on genres for further genre exploration.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+It is currently in alpha and works for:
+
+1. Basic artist search
+2. Basic genre search (click only)
+
+## To Do List:
+
+The following features need to be included in order for this application to be considered "working":
+
+1. Refresh Token: Access tokens from Spotify expire after one hour. The application should gracefully refresh the token based on the existing access token. It should not required another permission grant from Spotify.
+2. Artist/Genre Search: Allow user to select either genre or artist search (both?) via the text box
