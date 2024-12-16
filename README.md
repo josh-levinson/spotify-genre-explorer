@@ -9,6 +9,8 @@ It is currently in alpha and works for:
 1. Basic artist search
 2. Basic genre search (click only)
 
+![screenshot](./public/screenshot.png)
+
 ## To Do List:
 
 The following features need to be included in order for this application to be considered "working":
