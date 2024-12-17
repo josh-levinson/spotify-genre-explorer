@@ -3,23 +3,20 @@ import { SPOTIFY_API_URL } from "../../utils/constants";
 import { makeSpotifyRequest } from "../../utils/make_spotify_request";
 import "./Search.css";
 
-function Search({ setArtists }) {
-  const [search, setSearch] = useState("");
-  const [searchType, setSearchType] = useState("artist");
-
+function Search({ setArtists, search, setSearch, searchType, setSearchType }) {
   async function handleSearch() {
+    const searchString = search.replaceAll(" ", "-");
+
     if (searchType === "artist") {
       const response = await makeSpotifyRequest(
-        `${SPOTIFY_API_URL}/search?q=${encodeURIComponent(search)}&type=artist`
+        `${SPOTIFY_API_URL}/search?q=${searchString}&type=artist`
       );
       setArtists(
         response?.artists?.items.filter((artist) => artist.genres.length)
       );
     } else if (searchType === "genre") {
       const response = await makeSpotifyRequest(
-        `${SPOTIFY_API_URL}/search?q=genre%3A${encodeURIComponent(
-          search
-        )}&type=artist&limit=20`
+        `${SPOTIFY_API_URL}/search?q=genre%3A${searchString}&type=artist&limit=20`
       );
       setArtists(response?.artists?.items);
     }
@@ -38,6 +35,7 @@ function Search({ setArtists }) {
           name="searchType"
           className="search-type"
           onChange={(e) => setSearchType(e.target.value)}
+          value={searchType}
         >
           <option value="artist">Artist</option>
           <option value="genre">Genre</option>

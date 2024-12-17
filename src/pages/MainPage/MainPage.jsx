@@ -8,24 +8,26 @@ import { makeSpotifyRequest } from "../../utils/make_spotify_request";
 
 function MainPage() {
   const [artists, setArtists] = useState([]);
+  const [search, setSearch] = useState("");
+  const [searchType, setSearchType] = useState("artist");
 
   const accessToken = localStorage.getItem("access_token");
-  const headers = {
-    Authorization: `Bearer ${accessToken}`,
-    "Content-Type": "application/json",
-  };
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [artists]);
 
   async function handleGenreSelect(genre) {
+    const genreString = genre.replaceAll(" ", "-");
+
     const response = await makeSpotifyRequest(
       `${SPOTIFY_API_URL}/search?q=genre%3A${encodeURIComponent(
-        genre
+        genreString
       )}&type=artist&limit=20`
     );
     setArtists(response?.artists?.items);
+    setSearch(genre);
+    setSearchType("genre");
   }
 
   return (
@@ -34,7 +36,13 @@ function MainPage() {
         <AuthPage />
       ) : (
         <div className="main">
-          <Search setArtists={setArtists} />
+          <Search
+            setArtists={setArtists}
+            search={search}
+            setSearch={setSearch}
+            searchType={searchType}
+            setSearchType={setSearchType}
+          />
           <ArtistList artists={artists} onGenreSelect={handleGenreSelect} />
         </div>
       )}
