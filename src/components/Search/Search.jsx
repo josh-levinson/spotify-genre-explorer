@@ -11,9 +11,7 @@ function Search({ setArtists, search, setSearch, searchType, setSearchType }) {
       const response = await makeSpotifyRequest(
         `${SPOTIFY_API_URL}/search?q=${searchString}&type=artist`
       );
-      setArtists(
-        response?.artists?.items.filter((artist) => artist.genres.length)
-      );
+      setArtists(response?.artists?.items);
     } else if (searchType === "genre") {
       const response = await makeSpotifyRequest(
         `${SPOTIFY_API_URL}/search?q=genre%3A${searchString}&type=artist&limit=20`

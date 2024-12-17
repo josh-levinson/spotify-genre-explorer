@@ -19,8 +19,8 @@ export const refreshAccessToken = async () => {
   const body = await fetch(SPOTIFY_TOKEN_URL, payload);
   const response = await body.json();
 
-  localStorage.setItem("access_token", response.accessToken);
+  localStorage.setItem("access_token", response.access_token);
   if (response.refreshToken) {
-    localStorage.setItem("refresh_token", response.refreshToken);
+    localStorage.setItem("refresh_token", response.refresh_token);
   }
 };
