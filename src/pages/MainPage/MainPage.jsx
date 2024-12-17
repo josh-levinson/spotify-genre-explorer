@@ -25,8 +25,7 @@ function MainPage() {
         genre
       )}&type=artist&limit=20`
     );
-    const data = await response.json();
-    setArtists(data?.artists?.items);
+    setArtists(response?.artists?.items);
   }
 
   return (
@@ -34,10 +33,8 @@ function MainPage() {
       {accessToken === null || accessToken === undefined ? (
         <AuthPage />
       ) : (
-        <div>
-          <div className="search">
-            <Search setArtists={setArtists} />
-          </div>
+        <div className="main">
+          <Search setArtists={setArtists} />
           <ArtistList artists={artists} onGenreSelect={handleGenreSelect} />
         </div>
       )}

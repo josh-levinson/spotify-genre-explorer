@@ -1,13 +1,14 @@
 .search {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   margin-bottom: 1rem;
-  margin-right: 0.5rem;
 }
 
-input {
-  padding: -1.5rem;
-  font-size: 1rem;
+.search-input {
   border: 0px solid #ccc;
   border-radius: 4px;
+  margin-bottom: 0.5rem;
+  margin-right: 0.5rem;
+  font-size: 1rem;
 }

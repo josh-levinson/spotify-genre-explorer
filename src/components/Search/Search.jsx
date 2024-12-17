@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { SPOTIFY_API_URL } from "../../utils/constants";
 import { makeSpotifyRequest } from "../../utils/make_spotify_request";
+import "./Search.css";
 
 function Search({ setArtists }) {
   const [search, setSearch] = useState("");
@@ -25,16 +26,23 @@ function Search({ setArtists }) {
   }
 
   return (
-    <div>
-      <input
-        name="search"
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-      />
-      <select name="searchType" onChange={(e) => setSearchType(e.target.value)}>
-        <option value="artist">Artist</option>
-        <option value="genre">Genre</option>
-      </select>
+    <div className="search">
+      <div>
+        <input
+          name="search"
+          className="search-input"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+        <select
+          name="searchType"
+          className="search-type"
+          onChange={(e) => setSearchType(e.target.value)}
+        >
+          <option value="artist">Artist</option>
+          <option value="genre">Genre</option>
+        </select>
+      </div>
       <button onClick={handleSearch}>Search</button>
     </div>
   );
