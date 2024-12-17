@@ -16,4 +16,4 @@ It is currently in alpha and works for:
 The following features need to be included in order for this application to be considered "working":
 
 1. Refresh Token: Access tokens from Spotify expire after one hour. The application should gracefully refresh the token based on the existing access token. It should not required another permission grant from Spotify.
-2. Artist/Genre Search: Allow user to select either genre or artist search (both?) via the text box
+2. Pagination: It would be nice if we could receive several pages of artists back from the Spotify API and browse through them
