@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import "./MainPage.css";
 import AuthPage from "../AuthPage/AuthPage";
 import ArtistList from "../../components/ArtistList/ArtistList";
+import Footer from "../../components/Footer/Footer";
 import Search from "../../components/Search/Search";
 import { SPOTIFY_API_URL } from "../../utils/constants";
 import { makeSpotifyRequest } from "../../utils/make_spotify_request";
@@ -44,6 +45,7 @@ function MainPage() {
             setSearchType={setSearchType}
           />
           <ArtistList artists={artists} onGenreSelect={handleGenreSelect} />
+          <Footer />
         </div>
       )}
     </>
