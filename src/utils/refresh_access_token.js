@@ -1,6 +1,6 @@
 import { CLIENT_ID, SPOTIFY_TOKEN_URL } from "./constants";
 
-export const getRefreshToken = async () => {
+export const refreshAccessToken = async () => {
   // refresh token that has been previously stored
   const refreshToken = localStorage.getItem("refresh_token");
   const url = "https://accounts.spotify.com/api/token";

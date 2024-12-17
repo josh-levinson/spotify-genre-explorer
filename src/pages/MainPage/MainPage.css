@@ -1,12 +1,1 @@
-.search {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 1rem;
-}
 
-input {
-  padding: -1.5rem;
-  font-size: 1rem;
-  border: 0px solid #ccc;
-  border-radius: 4px;
-}
