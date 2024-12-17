@@ -9,6 +9,13 @@ function Callback() {
   useEffect(() => {
     const queryParams = new URLSearchParams(location.search);
     const code = queryParams.get("code");
+
+    // If there's no code parameter, redirect immediately
+    if (localStorage.getItem("access_token") || !code) {
+      navigate("/");
+      return;
+    }
+
     getAccessToken(code).then((data) => {
       console.log("access token", localStorage.getItem("access_token"));
       navigate("/");
