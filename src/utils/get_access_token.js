@@ -32,6 +32,7 @@ export const getAccessToken = async (code) => {
     const data = await response.json();
     localStorage.setItem("access_token", data.access_token);
     localStorage.setItem("refresh_token", data.refresh_token);
+    localStorage.setItem("expires_at", Date.now() + data.expires_in * 1000);
     return data;
   } catch (error) {
     console.error("Error getting access token:", error);
