@@ -1,4 +1,4 @@
-# Spotify Genre Explorer
+# Genre Explorer
 
 This is a React application for exploring hidden Spotify genres through API calls
 
