@@ -3,6 +3,7 @@ import "./MainPage.css";
 import AuthPage from "../AuthPage/AuthPage";
 import ArtistList from "../../components/ArtistList/ArtistList";
 import Footer from "../../components/Footer/Footer";
+import Logout from "../../components/Logout/Logout";
 import Search from "../../components/Search/Search";
 import { SPOTIFY_API_URL } from "../../utils/constants";
 import { makeSpotifyRequest } from "../../utils/make_spotify_request";
@@ -37,6 +38,7 @@ function MainPage() {
         <AuthPage />
       ) : (
         <div className="main">
+          <Logout />
           <Search
             setArtists={setArtists}
             search={search}

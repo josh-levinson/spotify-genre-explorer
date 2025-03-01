@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { SPOTIFY_API_URL } from "../../utils/constants";
 import { makeSpotifyRequest } from "../../utils/make_spotify_request";
 import "./Search.css";
