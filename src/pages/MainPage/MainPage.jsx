@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import "./MainPage.css";
 import AuthPage from "../AuthPage/AuthPage";
 import ArtistList from "../../components/ArtistList/ArtistList";
+import Eula from "../../components/Eula/Eula";
 import Footer from "../../components/Footer/Footer";
 import Logout from "../../components/Logout/Logout";
 import Search from "../../components/Search/Search";
@@ -39,6 +40,7 @@ function MainPage() {
       ) : (
         <div className="main">
           <Logout />
+          <Eula />
           <Search
             setArtists={setArtists}
             search={search}
