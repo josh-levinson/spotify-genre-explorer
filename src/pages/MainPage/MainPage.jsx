@@ -11,10 +11,16 @@ import { makeSpotifyRequest } from "../../utils/make_spotify_request";
 
 function MainPage() {
   const [artists, setArtists] = useState([]);
+  const [eulaAccepted, setEulaAccepted] = useState(false);
   const [search, setSearch] = useState("");
   const [searchType, setSearchType] = useState("artist");
 
   const accessToken = localStorage.getItem("access_token");
+
+  useEffect(() => {
+    setEulaAccepted(!!localStorage.getItem("eula_accepted"));
+    console.log("eulaAccepted", eulaAccepted);
+  }, [setEulaAccepted]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -39,17 +45,22 @@ function MainPage() {
         <AuthPage />
       ) : (
         <div className="main">
-          <Logout />
-          <Eula />
-          <Search
-            setArtists={setArtists}
-            search={search}
-            setSearch={setSearch}
-            searchType={searchType}
-            setSearchType={setSearchType}
-          />
-          <ArtistList artists={artists} onGenreSelect={handleGenreSelect} />
-          <Footer />
+          {eulaAccepted ? (
+            <>
+              <Logout />
+              <Search
+                setArtists={setArtists}
+                search={search}
+                setSearch={setSearch}
+                searchType={searchType}
+                setSearchType={setSearchType}
+              />
+              <ArtistList artists={artists} onGenreSelect={handleGenreSelect} />
+              <Footer />
+            </>
+          ) : (
+            <Eula setEulaAccepted={setEulaAccepted} />
+          )}
         </div>
       )}
     </>

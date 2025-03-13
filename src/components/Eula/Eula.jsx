@@ -2,13 +2,13 @@ import { useEffect, useState } from "react";
 import "./Eula.css";
 import Markdown from "react-markdown";
 
-function Eula() {
-  const [eulaAccepted, setEulaAccepted] = useState(false);
+function Eula({ setEulaAccepted }) {
+  const [eulaChecked, setEulaChecked] = useState(false);
   const [eulaMarkdown, setEulaMarkdown] = useState(null);
 
   function handleAccept() {
+    localStorage.setItem("eula_accepted", true);
     setEulaAccepted(true);
-    localStorage.setItem("eulaAccepted", true);
   }
 
   useEffect(() => {
@@ -20,8 +20,6 @@ function Eula() {
           throw new Error(`Failed to fetch eula markdown: ${response.status}`);
 
         const text = await response.text();
-        console.log(text);
-
         setEulaMarkdown(text);
       } catch (error) {
         console.error("Error fetching eula markdown:", error);
@@ -40,14 +38,14 @@ function Eula() {
         <label className="eula-checkbox">
           <input
             type="checkbox"
-            checked={eulaAccepted}
-            onChange={(e) => setEulaAccepted(e.target.checked)}
+            checked={eulaChecked}
+            onChange={(e) => setEulaChecked(e.target.checked)}
           />
           I have read and agree to the End User License Agreement
         </label>
         <button
           className="eula-button"
-          disabled={!eulaAccepted}
+          disabled={!eulaChecked}
           onClick={handleAccept}
         >
           Accept and Continue
