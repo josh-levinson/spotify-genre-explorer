@@ -1,20 +1,67 @@
 .eula {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  color: white;
+.eula-content {
+  background-color: #1a1a1a;
+  width: 80%;
+  max-height: 80vh;
+  padding: 2rem;
+  border-radius: 8px;
+  overflow-y: auto;
+  position: relative;
+}
+
+.eulaText {
+  margin-bottom: 2rem;
+  color: #ffffff;
 }
 
 .eulaActions {
   display: flex;
   flex-direction: column;
-  margin-top: 10px;
-  width: 50%;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.eula-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #ffffff;
+}
+
+.eula-button {
+  padding: 0.75rem 1.5rem;
+  background-color: #1db954;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.eula-button:disabled {
+  background-color: #535353;
+  cursor: not-allowed;
+}
+
+/* Scope heading colors to only affect headings within the EULA */
+.eula h1,
+.eula h2,
+.eula h3,
+.eula h4,
+.eula h5,
+.eula h6 {
+  color: white;
 }

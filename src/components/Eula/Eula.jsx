@@ -31,25 +31,27 @@ function Eula({ setEulaAccepted }) {
 
   return (
     <div className="eula">
-      <div className="eulaText">
-        <Markdown>{eulaMarkdown}</Markdown>
-      </div>
-      <div className="eulaActions">
-        <label className="eula-checkbox">
-          <input
-            type="checkbox"
-            checked={eulaChecked}
-            onChange={(e) => setEulaChecked(e.target.checked)}
-          />
-          I have read and agree to the End User License Agreement
-        </label>
-        <button
-          className="eula-button"
-          disabled={!eulaChecked}
-          onClick={handleAccept}
-        >
-          Accept and Continue
-        </button>
+      <div className="eula-content">
+        <div className="eulaText">
+          <Markdown>{eulaMarkdown}</Markdown>
+        </div>
+        <div className="eulaActions">
+          <label className="eula-checkbox">
+            <input
+              type="checkbox"
+              checked={eulaChecked}
+              onChange={(e) => setEulaChecked(e.target.checked)}
+            />
+            I have read and agree to the End User License Agreement
+          </label>
+          <button
+            className="eula-button"
+            disabled={!eulaChecked}
+            onClick={handleAccept}
+          >
+            Accept and Continue
+          </button>
+        </div>
       </div>
     </div>
   );

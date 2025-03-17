@@ -19,6 +19,12 @@ function Search({ setArtists, search, setSearch, searchType, setSearchType }) {
     }
   }
 
+  function handleKeyDown(e) {
+    if (e.key === "Enter") {
+      handleSearch();
+    }
+  }
+
   return (
     <div className="search">
       <div>
@@ -27,6 +33,7 @@ function Search({ setArtists, search, setSearch, searchType, setSearchType }) {
           className="search-input"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
+          onKeyDown={handleKeyDown}
         />
         <select
           name="searchType"
