@@ -66,11 +66,11 @@ The only processing that occurs is the temporary authentication with Spotify's A
 
 ### Data Subject Rights
 
-As we do not collect or store personal data, many GDPR rights (access, erasure, portability) are not applicable. However, we respect and uphold these principles, and you may contact us at josh@betweentworocks.com with any concerns or questions regarding your data rights.
+As we do not collect or store personal data, many GDPR rights (access, erasure, portability) are not applicable. However, we respect and uphold these principles, and you may contact us at [music.genre.explorer@gmail.com](mailto:music.genre.explorer@gmail.com) with any concerns or questions regarding your data rights.
 
 ### Data Protection Officer
 
-Given our minimal data processing activities, we have not appointed a Data Protection Officer. For any data-related inquiries, please contact us at josh@betweentworocks.com.
+Given our minimal data processing activities, we have not appointed a Data Protection Officer. For any data-related inquiries, please contact us at [music.genre.explorer@gmail.com](mailto:music.genre.explorer@gmail.com).
 
 ## 6. RESTRICTIONS
 
@@ -110,6 +110,6 @@ This Agreement shall be governed by and construed in accordance with the laws of
 
 ## 13. CONTACT INFORMATION
 
-If you have any questions about this Agreement, please contact us at josh@betweentworocks.com.
+If you have any questions about this Agreement, please contact us at [music.genre.explorer@gmail.com](mailto:music.genre.explorer@gmail.com).
 
 By using the Application, you acknowledge that you have read this Agreement, understand it, and agree to be bound by its terms and conditions.
